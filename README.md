@@ -122,7 +122,7 @@ Facebook's Terms of Service; you are solely responsible for how you use it.
 ## Credits
 
 UI photography from [Unsplash](https://unsplash.com/?utm_source=Stashly&utm_medium=referral)
-by Andy Sanchez, Universtock, and Tomás Mendes.
+by Andy Sanchez, Universtock, Tomás Mendes, and Max Petrunin (icon).
 
 ## License
 
