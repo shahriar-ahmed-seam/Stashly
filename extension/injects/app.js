@@ -59,7 +59,7 @@
         const a = "Stashly",
           r = "download-albums-for-facebook",
           l =
-            "https://github.com/shahriar-ahmed-seam/bulkFb-media-download",
+            "https://github.com/shahriar-ahmed-seam/Stashly",
           d =
             "https://www.facebook.com/permalink.php?story_fbid=pfbid02H9LG3DgtRZPzcvoSF9UWa5aaaw5aptEpygNFKLLSitodMV1mNWqzCDvG2A37wJWcl&id=61563089216213",
           u = {
@@ -94,7 +94,7 @@
         }
         const h = "data:application/json,[]",
           g = "data:application/json,[]",
-          p = "https://github.com/shahriar-ahmed-seam/bulkFb-media-download/";
+          p = "https://github.com/shahriar-ahmed-seam/Stashly/";
         let f = [];
         const m = "mHxGWIqCotRcnLgFbr4YcdaZWDMHJlWu";
         function w(n) {
@@ -203,7 +203,7 @@
                           children: [
                             i.jsx("img", {
                               style: { width: l, height: l, display: "block" },
-                              src: `https://github.com/shahriar-ahmed-seam/bulkFb-media-download/raw/main/${t.projectId}.png`,
+                              src: `https://github.com/shahriar-ahmed-seam/Stashly/raw/main/${t.projectId}.png`,
                               alt: "",
                             }),
                             i.jsxs("div", {
@@ -3695,7 +3695,7 @@
                       type: "primary",
                       onClick: () =>
                         window.open(
-                          "https://github.com/shahriar-ahmed-seam/bulkFb-media-download/issues",
+                          "https://github.com/shahriar-ahmed-seam/Stashly/issues",
                           "_blank",
                         ),
                       children: "Report an issue",
@@ -3754,7 +3754,7 @@
             bold: s = !0,
           } = t;
           function o() {
-            window.open(`https://github.com/shahriar-ahmed-seam/bulkFb-media-download${t.linkPath}`, "_blank");
+            window.open(`https://github.com/shahriar-ahmed-seam/Stashly${t.linkPath}`, "_blank");
           }
           return i.jsxs("span", {
             style: { lineHeight: 1, paddingBottom: 4 },
@@ -4505,7 +4505,7 @@
                       i.jsx("a", {
                         target: "_blank",
                         style: { color: "#385898" },
-                        href: "https://github.com/shahriar-ahmed-seam/bulkFb-media-download/blob/main/PRIVACY.md",
+                        href: "https://github.com/shahriar-ahmed-seam/Stashly/blob/main/PRIVACY.md",
                         children: "Disclaimer",
                       }),
                       i.jsx("span", {
@@ -5040,7 +5040,7 @@
               "Have issues or 🐛Bug during Download?",
               " ",
               i.jsx("a", {
-                href: "https://github.com/shahriar-ahmed-seam/bulkFb-media-download",
+                href: "https://github.com/shahriar-ahmed-seam/Stashly",
                 target: "_blank",
                 style: { paddingRight: 8 },
                 children: "Give us feedback on Facebook",
@@ -5079,7 +5079,7 @@
                       a,
                       " not working right now.",
                       i.jsx("a", {
-                        href: "https://github.com/shahriar-ahmed-seam/bulkFb-media-download",
+                        href: "https://github.com/shahriar-ahmed-seam/Stashly",
                         target: "_blank",
                         style: { paddingRight: 8 },
                         children: "Give us feedback on Facebook",
@@ -5196,7 +5196,7 @@
               i.jsx("div", {
                 style: { marginLeft: 24 },
                 children: i.jsx("a", {
-                  href: "https://github.com/shahriar-ahmed-seam/bulkFb-media-download#faq",
+                  href: "https://github.com/shahriar-ahmed-seam/Stashly#faq",
                   target: "_blank",
                   style: { fontSize: 12, color: "rgb(47, 129, 247)" },
                   children: "❓FAQ",

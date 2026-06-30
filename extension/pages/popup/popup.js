@@ -1,6 +1,6 @@
 /* Stashly popup logic. */
 
-const REPO_URL = "https://github.com/shahriar-ahmed-seam/bulkFb-media-download";
+const REPO_URL = "https://github.com/shahriar-ahmed-seam/Stashly";
 const FB_PHOTOS_URL = "https://www.facebook.com/me/photos_albums";
 const FB_HOSTS = ["www.facebook.com", "web.facebook.com"];
 

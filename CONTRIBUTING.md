@@ -5,7 +5,7 @@ Thanks for your interest! Stashly is a small, dependency-free project.
 ## Getting started
 
 ```bash
-git clone https://github.com/shahriar-ahmed-seam/bulkFb-media-download.git
+git clone https://github.com/shahriar-ahmed-seam/Stashly.git
 cd bulkFb-media-download
 npm test       # run the test suite (uses Node's built-in runner, no installs)
 ```

@@ -1,6 +1,6 @@
 /* Stashly options/settings page logic. */
 
-const REPO_URL = "https://github.com/shahriar-ahmed-seam/bulkFb-media-download";
+const REPO_URL = "https://github.com/shahriar-ahmed-seam/Stashly";
 
 function $(id) {
   return document.getElementById(id);

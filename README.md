@@ -9,7 +9,7 @@
 Save entire Facebook photo collections straight to a folder on disk, in one click.
 Fully client-side: no login, no servers, no tracking.
 
-[![CI](https://github.com/shahriar-ahmed-seam/bulkFb-media-download/actions/workflows/ci.yml/badge.svg)](https://github.com/shahriar-ahmed-seam/bulkFb-media-download/actions/workflows/ci.yml)
+[![CI](https://github.com/shahriar-ahmed-seam/Stashly/actions/workflows/ci.yml/badge.svg)](https://github.com/shahriar-ahmed-seam/Stashly/actions/workflows/ci.yml)
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-8b5cf6)
 ![Chrome 103+](https://img.shields.io/badge/Chrome-103%2B-6366f1)
 ![License: MIT](https://img.shields.io/badge/License-MIT-34d399)
@@ -38,7 +38,7 @@ Fully client-side: no login, no servers, no tracking.
 
 ## 🚀 Install (from source)
 
-1. Download the latest `stashly-vX.Y.Z.zip` from [Releases](https://github.com/shahriar-ahmed-seam/bulkFb-media-download/releases) and unzip it — **or** clone this repo.
+1. Download the latest `stashly-vX.Y.Z.zip` from [Releases](https://github.com/shahriar-ahmed-seam/Stashly/releases) and unzip it — **or** clone this repo.
 2. Open `chrome://extensions` in Chrome (or any Chromium browser).
 3. Enable **Developer mode** (top-right).
 4. Click **Load unpacked** and select the `extension/` folder (the one containing `manifest.json`).
@@ -97,7 +97,7 @@ blocks injected scripts. Stashly removes it only on `facebook.com` so its UI can
 
 **The download button disappeared / errors out.** Facebook frequently changes its
 internal module and GraphQL identifiers, which this kind of tool depends on. Updates
-may be required when that happens — please [open an issue](https://github.com/shahriar-ahmed-seam/bulkFb-media-download/issues).
+may be required when that happens — please [open an issue](https://github.com/shahriar-ahmed-seam/Stashly/issues).
 
 **Will this be on the Chrome Web Store?** Possibly, but not guaranteed — extensions
 that modify Facebook and remove CSP headers carry review risk. For now, install from source.

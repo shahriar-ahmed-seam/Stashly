@@ -43,4 +43,4 @@ extension's **Options** page, or by removing the extension.
 ## Contact
 
 Questions? Open an issue:
-<https://github.com/shahriar-ahmed-seam/bulkFb-media-download/issues>
+<https://github.com/shahriar-ahmed-seam/Stashly/issues>
