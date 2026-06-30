@@ -21,9 +21,75 @@
   --sx-glow: 0 8px 28px -8px rgba(139, 92, 246, 0.6);
 }
 
+/* ── The download panel itself (Ant Design Modal) ─────────────────────────── */
+.ant-modal-mask {
+  background: rgba(6, 6, 12, 0.62) !important;
+  backdrop-filter: blur(6px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(6px) saturate(120%) !important;
+}
+.ant-modal-content {
+  position: relative !important;
+  background:
+    radial-gradient(125% 85% at 0% 0%, rgba(139, 92, 246, 0.34), transparent 58%),
+    radial-gradient(120% 90% at 100% 0%, rgba(34, 211, 238, 0.2), transparent 55%),
+    radial-gradient(120% 120% at 50% 130%, rgba(232, 121, 249, 0.22), transparent 60%),
+    linear-gradient(160deg, #100b22 0%, #0b0a16 58%, #08070f 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 24px !important;
+  box-shadow:
+    0 40px 120px -28px rgba(124, 58, 237, 0.6),
+    0 8px 40px -12px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(22px) saturate(165%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(165%) !important;
+  overflow: hidden !important;
+  color: #ececfb !important;
+}
+/* Gradient accent rail across the top edge. */
+.ant-modal-content::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 0 auto 0 !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, #e879f9, #8b5cf6 45%, #22d3ee) !important;
+  opacity: 0.95 !important;
+}
+.ant-modal-header {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09) !important;
+  padding-bottom: 14px !important;
+}
+.ant-modal-title {
+  color: #fff !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.01em !important;
+}
+.ant-modal-body {
+  color: #c9c9e6 !important;
+}
+.ant-modal-close {
+  color: rgba(255, 255, 255, 0.65) !important;
+  border-radius: 10px !important;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease !important;
+}
+.ant-modal-close:hover {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+/* Premium scrollbar inside the scrolling modal body. */
+.ant-modal-body::-webkit-scrollbar {
+  width: 10px;
+}
+.ant-modal-body::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.45);
+  border-radius: 999px;
+}
+
 /* ── Surfaces / cards ─────────────────────────────────────────────────────── */
 .ant-card {
-  background: var(--sx-surface) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
   border: 1px solid var(--sx-hair) !important;
   border-radius: 16px !important;
   backdrop-filter: blur(14px) saturate(140%) !important;
