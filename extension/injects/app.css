@@ -1,47 +1,218 @@
 /*
- * Stashly — accent theme for the injected in-page UI.
+ * Stashly — in-page UI theme (injected into Facebook).
  *
- * The download UI is rendered with Ant Design. Facebook itself does not use
- * Ant Design, so these overrides only affect Stashly's own components on the
- * page. Kept conservative so a Facebook layout change can't be affected.
+ * The download panel is built with Ant Design. Facebook does not use Ant
+ * Design, so these `.ant-*` overrides only affect Stashly's own UI. Visual
+ * properties use !important to win over Ant Design's runtime CSS-in-JS.
  */
 
 :root {
-  --stashly-accent: #8b5cf6;
-  --stashly-accent-2: #6366f1;
+  --sx-violet: #8b5cf6;
+  --sx-indigo: #6366f1;
+  --sx-cyan: #22d3ee;
+  --sx-pink: #e879f9;
+  --sx-ink: #f1f1f8;
+  --sx-muted: #aab;
+  --sx-surface: rgba(20, 20, 32, 0.72);
+  --sx-surface-2: rgba(255, 255, 255, 0.05);
+  --sx-hair: rgba(255, 255, 255, 0.1);
+  --sx-grad: linear-gradient(135deg, #8b5cf6, #6366f1);
+  --sx-grad-bright: linear-gradient(135deg, #e879f9, #8b5cf6 45%, #22d3ee);
+  --sx-glow: 0 8px 28px -8px rgba(139, 92, 246, 0.6);
 }
 
-/* Square checkbox tick (original behaviour). */
+/* ── Surfaces / cards ─────────────────────────────────────────────────────── */
+.ant-card {
+  background: var(--sx-surface) !important;
+  border: 1px solid var(--sx-hair) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(14px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(140%) !important;
+  box-shadow: 0 18px 50px -24px rgba(0, 0, 0, 0.75) !important;
+  overflow: hidden !important;
+}
+.ant-card-head {
+  border-bottom: 1px solid var(--sx-hair) !important;
+  background: linear-gradient(
+    180deg,
+    rgba(139, 92, 246, 0.14),
+    transparent
+  ) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
+.ant-btn {
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  transition:
+    transform 0.1s ease,
+    filter 0.18s ease,
+    box-shadow 0.2s ease !important;
+}
+.ant-btn:not(.ant-btn-primary):not(.ant-btn-text) {
+  background: var(--sx-surface-2) !important;
+  border: 1px solid var(--sx-hair) !important;
+  color: var(--sx-ink) !important;
+}
+.ant-btn-primary {
+  background: var(--sx-grad) !important;
+  border: none !important;
+  color: #fff !important;
+  box-shadow: var(--sx-glow) !important;
+  padding-inline: 18px !important;
+  height: auto !important;
+  min-height: 38px !important;
+}
+.ant-btn-primary:hover {
+  filter: brightness(1.12) !important;
+  transform: translateY(-1px) !important;
+}
+.ant-btn-text {
+  color: var(--sx-muted) !important;
+}
+.ant-btn-text:hover {
+  color: var(--sx-ink) !important;
+  background: var(--sx-surface-2) !important;
+}
+.ant-btn-link {
+  color: var(--sx-violet) !important;
+}
+
+/* ── Segmented control (Images Format as) ─────────────────────────────────── */
+.ant-segmented {
+  background: rgba(0, 0, 0, 0.35) !important;
+  border: 1px solid var(--sx-hair) !important;
+  border-radius: 12px !important;
+  padding: 3px !important;
+}
+.ant-segmented-item {
+  border-radius: 9px !important;
+  color: var(--sx-muted) !important;
+  transition: color 0.18s ease !important;
+}
+.ant-segmented-item:hover {
+  color: var(--sx-ink) !important;
+}
+.ant-segmented-item-selected {
+  background: var(--sx-grad) !important;
+  color: #fff !important;
+  box-shadow: var(--sx-glow) !important;
+}
+.ant-segmented-thumb {
+  background: var(--sx-grad) !important;
+  border-radius: 9px !important;
+}
+
+/* ── Checkbox ─────────────────────────────────────────────────────────────── */
+.ant-checkbox-inner {
+  border-radius: 6px !important;
+  border-color: var(--sx-hair) !important;
+  background: var(--sx-surface-2) !important;
+  width: 18px !important;
+  height: 18px !important;
+}
 .ant-checkbox-inner:after {
   border-radius: 0 !important;
 }
-
-/* Primary buttons use the Stashly gradient. */
-.ant-btn-primary {
-  background: linear-gradient(
-    135deg,
-    var(--stashly-accent),
-    var(--stashly-accent-2)
-  ) !important;
-  border-color: var(--stashly-accent) !important;
-  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35) !important;
+.ant-checkbox-checked .ant-checkbox-inner {
+  background: var(--sx-grad) !important;
+  border-color: var(--sx-violet) !important;
 }
-.ant-btn-primary:hover,
-.ant-btn-primary:focus {
-  filter: brightness(1.08);
+.ant-checkbox-wrapper:hover .ant-checkbox-inner,
+.ant-checkbox:hover .ant-checkbox-inner {
+  border-color: var(--sx-violet) !important;
 }
 
-/* Checked controls adopt the accent. */
-.ant-checkbox-checked .ant-checkbox-inner,
+/* ── Radio (fetch quantity control) ───────────────────────────────────────── */
+.ant-radio-inner {
+  border-color: var(--sx-hair) !important;
+  background: var(--sx-surface-2) !important;
+}
 .ant-radio-checked .ant-radio-inner {
-  background-color: var(--stashly-accent) !important;
-  border-color: var(--stashly-accent) !important;
+  border-color: var(--sx-violet) !important;
+  background: var(--sx-violet) !important;
 }
-.ant-switch-checked {
-  background: var(--stashly-accent) !important;
+.ant-radio-checked .ant-radio-inner::after {
+  background: #fff !important;
 }
 
-/* Links / spinners pick up the accent tone. */
-.ant-btn-link {
-  color: var(--stashly-accent) !important;
+/* ── Inputs ───────────────────────────────────────────────────────────────── */
+.ant-input,
+.ant-input-number,
+.ant-input-number-input {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid var(--sx-hair) !important;
+  border-radius: 10px !important;
+  color: var(--sx-ink) !important;
+}
+.ant-input:focus,
+.ant-input-focused,
+.ant-input-number-focused {
+  border-color: var(--sx-violet) !important;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25) !important;
+}
+
+/* ── Tag input ("original name") ──────────────────────────────────────────── */
+.tags-input,
+.tagify {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid var(--sx-hair) !important;
+  border-radius: 12px !important;
+  --tag-bg: var(--sx-violet);
+  --tag-text-color: #fff;
+}
+.tagify__tag > div {
+  border-radius: 8px !important;
+}
+.tagify__tag__removeBtn {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+.tags-input .tagify__tag > div::before,
+.tagify__tag > div::before {
+  background: var(--sx-grad) !important;
+  box-shadow: none !important;
+}
+.tagify-example {
+  color: var(--sx-muted) !important;
+}
+.tagify-example .eg-txt {
+  color: var(--sx-cyan) !important;
+}
+
+/* ── Overlays: tooltip & dropdown ─────────────────────────────────────────── */
+.ant-tooltip-inner {
+  background: rgba(16, 16, 26, 0.96) !important;
+  border: 1px solid var(--sx-hair) !important;
+  border-radius: 10px !important;
+  backdrop-filter: blur(10px) !important;
+}
+.ant-tooltip-arrow::before {
+  background: rgba(16, 16, 26, 0.96) !important;
+}
+.ant-dropdown-menu {
+  background: rgba(16, 16, 26, 0.96) !important;
+  border: 1px solid var(--sx-hair) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.8) !important;
+}
+.ant-dropdown-menu-item:hover {
+  background: var(--sx-surface-2) !important;
+}
+
+/* ── Switch (Full Speed etc., where used) ─────────────────────────────────── */
+.ant-switch-checked {
+  background: var(--sx-violet) !important;
+}
+
+/* Smooth, premium scrollbars inside the panel. */
+.ant-card ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.ant-card ::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.4);
+  border-radius: 999px;
 }

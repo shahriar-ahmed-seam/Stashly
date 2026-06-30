@@ -61,7 +61,7 @@
           l =
             "https://github.com/shahriar-ahmed-seam/Stashly",
           d =
-            "https://www.facebook.com/permalink.php?story_fbid=pfbid02H9LG3DgtRZPzcvoSF9UWa5aaaw5aptEpygNFKLLSitodMV1mNWqzCDvG2A37wJWcl&id=61563089216213",
+            "https://github.com/shahriar-ahmed-seam/Stashly/releases",
           u = {
             projectId: "a",
             chromeExtId: "b",
@@ -5165,7 +5165,7 @@
             }),
           });
         }
-        const yi = "4.9.1";
+        const yi = "1.1.1";
         function xi() {
           return i.jsxs(e.Space, {
             size: 8,
