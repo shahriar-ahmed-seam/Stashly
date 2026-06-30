@@ -3,78 +3,169 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stashly — Settings</title>
+    <title>Stashly</title>
     <link rel="stylesheet" href="../styles.css" />
     <style>
       body {
-        background:
-          radial-gradient(
-            1200px 500px at 50% -200px,
-            rgba(139, 92, 246, 0.18),
-            transparent
-          ),
-          var(--bg);
         min-height: 100vh;
       }
-      .wrap {
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 48px 24px 64px;
+
+      /* ── Cinematic hero ─────────────────────────────────────────── */
+      .hero {
+        position: relative;
+        min-height: 64vh;
         display: flex;
         flex-direction: column;
-        gap: 22px;
+        justify-content: flex-end;
+        padding: 40px clamp(24px, 6vw, 96px) 64px;
+        overflow: hidden;
       }
-      header {
+      .hero__bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        transform: scale(1.05);
+        animation: kenburns 28s ease-in-out infinite alternate;
+        z-index: 0;
+      }
+      @keyframes kenburns {
+        to {
+          transform: scale(1.18) translateY(-2%);
+        }
+      }
+      .hero__scrim {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background:
+          radial-gradient(
+            70% 60% at 20% 30%,
+            rgba(139, 92, 246, 0.35),
+            transparent 70%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(7, 7, 13, 0.45) 0%,
+            rgba(7, 7, 13, 0.55) 45%,
+            var(--bg) 100%
+          );
+      }
+      .hero__nav {
+        position: absolute;
+        top: 28px;
+        left: clamp(24px, 6vw, 96px);
+        right: clamp(24px, 6vw, 96px);
+        z-index: 3;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        flex-wrap: wrap;
+      }
+      .hero__content {
+        position: relative;
+        z-index: 2;
+        max-width: 720px;
+        animation: floatIn 0.7s ease both;
+      }
+      .brand__logo--lg {
+        width: 56px;
+        height: 56px;
+      }
+      .eyebrow {
+        font-size: 12px;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: var(--cyan);
+        margin-bottom: 14px;
+        font-weight: 700;
+      }
+      .hero h1 {
+        font-size: clamp(40px, 6vw, 76px);
+        line-height: 1.02;
+        letter-spacing: -0.03em;
+        font-weight: 800;
+      }
+      .hero h1 .accent {
+        background: var(--grad-bright);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shimmer 7s linear infinite;
+      }
+      .hero p.lead {
+        margin-top: 18px;
+        font-size: clamp(15px, 1.6vw, 19px);
+        color: var(--muted);
+        max-width: 560px;
+      }
+      .hero__cta {
+        margin-top: 28px;
+        display: flex;
         gap: 12px;
+        flex-wrap: wrap;
       }
-      .brand__logo {
-        width: 44px;
-        height: 44px;
+
+      /* ── Content ────────────────────────────────────────────────── */
+      .wrap {
+        position: relative;
+        z-index: 2;
+        max-width: 1040px;
+        margin: -36px auto 0;
+        padding: 0 clamp(24px, 6vw, 96px) 72px;
+        display: grid;
+        gap: 22px;
       }
-      .brand__name {
-        font-size: 22px;
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 22px;
+      }
+      @media (max-width: 760px) {
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+      }
+      .panel {
+        padding: 26px;
+        animation: floatIn 0.6s ease both;
       }
       h2 {
-        font-size: 14px;
-        font-weight: 700;
-        margin-bottom: 14px;
-        letter-spacing: 0.02em;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
         color: var(--muted);
+        margin-bottom: 18px;
       }
       .stats-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 14px;
-      }
-      .metric {
         text-align: center;
-        padding: 18px 10px;
       }
       .metric .num {
-        font-size: 30px;
+        font-size: 38px;
         font-weight: 800;
-        background: var(--grad);
+        background: var(--grad-bright);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
       }
       .metric .lbl {
-        font-size: 12px;
+        font-size: 11px;
         color: var(--muted);
-        margin-top: 4px;
+        margin-top: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
       .row {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 16px;
-        padding: 14px 0;
-        border-bottom: 1px solid var(--border);
+        padding: 16px 0;
+        border-bottom: 1px solid var(--hair);
       }
       .row:last-child {
         border-bottom: none;
@@ -87,119 +178,184 @@
         font-size: 12px;
         color: var(--muted);
       }
-      .feature-list {
-        columns: 2;
-        gap: 24px;
-        font-size: 13px;
-        color: var(--muted);
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        gap: 14px;
       }
-      .feature-list li {
-        margin: 0 0 8px 18px;
-      }
-      .toast {
-        position: fixed;
-        bottom: 24px;
-        left: 50%;
-        transform: translateX(-50%) translateY(20px);
-        background: var(--surface-2);
-        border: 1px solid var(--border);
-        color: var(--text);
-        padding: 10px 18px;
-        border-radius: 999px;
-        font-size: 13px;
+      .feature {
+        padding: 16px;
+        border-radius: var(--radius-sm);
+        background: var(--glass-strong);
+        border: 1px solid var(--hair);
+        font-size: 13.5px;
         font-weight: 600;
-        opacity: 0;
-        pointer-events: none;
-        transition:
-          opacity 0.2s ease,
-          transform 0.2s ease;
-        box-shadow: var(--shadow);
       }
-      .toast.show {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
+      .feature .ico {
+        display: inline-grid;
+        place-items: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 9px;
+        background: var(--grad);
+        margin-bottom: 10px;
+        font-size: 15px;
+      }
+      .feature span {
+        display: block;
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--muted);
+        margin-top: 3px;
       }
       footer {
         text-align: center;
         font-size: 12px;
         color: var(--faint);
-        line-height: 1.7;
+        line-height: 1.9;
+        padding: 8px 0 8px;
+      }
+      .toast {
+        position: fixed;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: rgba(20, 20, 32, 0.9);
+        border: 1px solid var(--hair);
+        backdrop-filter: blur(12px);
+        color: var(--ink);
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 700;
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.25s ease,
+          transform 0.25s ease;
+        box-shadow: var(--shadow);
+        z-index: 50;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
       }
     </style>
   </head>
-  <body>
-    <div class="wrap">
-      <header>
+  <body class="grain">
+    <section class="hero">
+      <div class="hero__bg" id="hero-bg"></div>
+      <div class="hero__scrim"></div>
+
+      <nav class="hero__nav">
         <div class="brand">
-          <img class="brand__logo" src="../../assets/logo.svg" alt="Stashly" />
+          <img
+            class="brand__logo brand__logo--lg"
+            src="../../assets/logo.svg"
+            alt="Stashly"
+          />
           <div>
             <div class="brand__name">Stashly</div>
-            <div class="brand__tag" id="version">Settings · v1.0.0</div>
+            <div class="brand__tag" id="version">v1.1.0</div>
           </div>
         </div>
         <a class="btn" id="github" href="#" target="_blank" rel="noopener"
-          >View on GitHub</a
+          >View on GitHub ↗</a
         >
-      </header>
+      </nav>
 
-      <section class="card">
-        <h2>Activity</h2>
-        <div class="stats-grid">
-          <div class="metric">
-            <div class="num" id="downloaded-count">—</div>
-            <div class="lbl">Files tracked</div>
+      <div class="hero__content">
+        <div class="eyebrow">Bulk media downloader</div>
+        <h1>Save every Facebook<br /><span class="accent">photo</span>, in one click.</h1>
+        <p class="lead">
+          Albums, profile galleries, group photos and the photo viewer —
+          straight to a folder you choose. Fully client-side. No login, no
+          servers, no tracking.
+        </p>
+        <div class="hero__cta">
+          <span class="pill pill--ok" id="status">
+            <span class="dot"></span><span id="status-text">Active</span>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <main class="wrap">
+      <div class="grid-2">
+        <section class="glass panel">
+          <h2>Activity</h2>
+          <div class="stats-grid">
+            <div class="metric">
+              <div class="num" id="downloaded-count">—</div>
+              <div class="lbl">Files tracked</div>
+            </div>
+            <div class="metric">
+              <div class="num" id="resume-count">—</div>
+              <div class="lbl">Resume points</div>
+            </div>
+            <div class="metric">
+              <div class="num" id="status-num">●</div>
+              <div class="lbl" id="status-lbl">Status</div>
+            </div>
           </div>
-          <div class="metric">
-            <div class="num" id="resume-count">—</div>
-            <div class="lbl">Resume points</div>
+        </section>
+
+        <section class="glass panel">
+          <h2>Maintenance</h2>
+          <div class="row">
+            <div class="info">
+              <strong>Download history</strong>
+              <span>IDs of downloaded files, used to skip duplicates.</span>
+            </div>
+            <button class="btn btn--danger" id="clear-history">Clear</button>
           </div>
-          <div class="metric">
-            <div class="num" id="status-num">●</div>
-            <div class="lbl" id="status-lbl">Status</div>
+          <div class="row">
+            <div class="info">
+              <strong>Resume points</strong>
+              <span>Saved positions so runs can resume.</span>
+            </div>
+            <button class="btn btn--danger" id="clear-resume">Clear</button>
+          </div>
+        </section>
+      </div>
+
+      <section class="glass panel">
+        <h2>Everything Stashly does</h2>
+        <div class="features">
+          <div class="feature">
+            <div class="ico">🖼️</div>Whole albums<span>One-click full download</span>
+          </div>
+          <div class="feature">
+            <div class="ico">👤</div>Profiles &amp; groups<span>Gallery downloads</span>
+          </div>
+          <div class="feature">
+            <div class="ico">🎞️</div>Carousel<span>Every viewer photo</span>
+          </div>
+          <div class="feature">
+            <div class="ico">📁</div>To your folder<span>File System Access API</span>
+          </div>
+          <div class="feature">
+            <div class="ico">🔄</div>Convert<span>JPG · PNG · WEBP</span>
+          </div>
+          <div class="feature">
+            <div class="ico">✍️</div>Custom names<span>File &amp; folder templates</span>
+          </div>
+          <div class="feature">
+            <div class="ico">⏯️</div>Resume<span>Pick up where you left off</span>
+          </div>
+          <div class="feature">
+            <div class="ico">🚫</div>Skip dupes<span>Never re-download</span>
           </div>
         </div>
-      </section>
-
-      <section class="card">
-        <h2>Maintenance</h2>
-        <div class="row">
-          <div class="info">
-            <strong>Download history</strong>
-            <span
-              >IDs of already-downloaded files, used to skip duplicates.</span
-            >
-          </div>
-          <button class="btn btn--danger" id="clear-history">Clear</button>
-        </div>
-        <div class="row">
-          <div class="info">
-            <strong>Resume points</strong>
-            <span>Saved positions so interrupted downloads can resume.</span>
-          </div>
-          <button class="btn btn--danger" id="clear-resume">Clear</button>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2>What Stashly does</h2>
-        <ul class="feature-list">
-          <li>Bulk-download entire albums</li>
-          <li>Profile &amp; group photo galleries</li>
-          <li>Photo-viewer carousel grabs</li>
-          <li>Save straight to a chosen folder</li>
-          <li>JPG / PNG / WEBP conversion</li>
-          <li>Custom file &amp; folder names</li>
-          <li>Resume interrupted runs</li>
-          <li>Skip already-downloaded files</li>
-        </ul>
       </section>
 
       <footer>
-        Stashly is fully client-side — no login, no servers, no tracking.<br />
-        For personal archival use only. Respect Facebook's Terms of Service and
-        the copyright of any content you download.
+        Stashly is fully client-side — no login, no servers, no tracking. For
+        personal archival use only; respect Facebook's Terms of Service and the
+        copyright of any content you download.<br />
+        <span id="credit"></span>
       </footer>
-    </div>
+    </main>
 
     <div class="toast" id="toast"></div>
     <script src="options.js"></script>

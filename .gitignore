@@ -4,6 +4,11 @@ dist/
 *.crx
 *.pem
 
+# Secrets / local env
+.env
+.env.local
+*.local
+
 # Dependencies
 node_modules/
 

@@ -45,8 +45,31 @@ async function refreshStats() {
 
 async function init() {
   const manifest = chrome.runtime.getManifest();
-  $("version").textContent = "Settings · v" + manifest.version;
+  $("version").textContent = "v" + manifest.version;
   $("github").href = REPO_URL;
+
+  // Cinematic hero backdrop (bundled, offline).
+  const bg = $("hero-bg");
+  if (bg) {
+    bg.style.backgroundImage = `url("${chrome.runtime.getURL(
+      "assets/img/hero.jpg",
+    )}")`;
+  }
+
+  // Unsplash attribution (required by their API guidelines).
+  try {
+    const res = await fetch(chrome.runtime.getURL("assets/img/credits.json"));
+    const credits = await res.json();
+    const hero = credits.find((c) => c.file === "hero.jpg") || credits[0];
+    if (hero) {
+      $("credit").innerHTML =
+        `Hero photo by <a href="${hero.profile}" target="_blank" rel="noopener">${hero.photographer}</a> on ` +
+        `<a href="${hero.unsplash}" target="_blank" rel="noopener">Unsplash</a>`;
+    }
+  } catch {
+    /* attribution is best-effort */
+  }
+
   await refreshStats();
 }
 

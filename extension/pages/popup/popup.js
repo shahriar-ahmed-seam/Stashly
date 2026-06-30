@@ -32,6 +32,14 @@ async function init() {
   $("version").textContent = "v" + manifest.version;
   $("github").href = REPO_URL;
 
+  // Cinematic hero backdrop (bundled, offline).
+  const hero = $("hero-img");
+  if (hero) {
+    hero.style.backgroundImage = `url("${chrome.runtime.getURL(
+      "assets/img/popup.jpg",
+    )}")`;
+  }
+
   // Detect whether the active tab is a supported Facebook page.
   let onFacebook = false;
   try {

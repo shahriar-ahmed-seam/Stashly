@@ -7,38 +7,70 @@
     <link rel="stylesheet" href="../styles.css" />
     <style>
       body {
-        width: 320px;
+        width: 340px;
+        overflow: hidden;
+        background: var(--bg);
       }
-      .top {
+      .hero {
+        position: relative;
+        height: 132px;
+        background:
+          linear-gradient(180deg, rgba(7, 7, 13, 0.15), var(--bg) 96%),
+          var(--grad);
+        background-size: cover;
+        background-position: center;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
-        padding: 16px;
+        padding: 14px 16px;
+      }
+      .hero__img {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.85;
+        z-index: 0;
+      }
+      .hero__scrim {
+        position: absolute;
+        inset: 0;
         background: linear-gradient(
           180deg,
-          rgba(139, 92, 246, 0.12),
-          transparent
+          rgba(7, 7, 13, 0.25),
+          rgba(7, 7, 13, 0.1) 35%,
+          var(--bg) 98%
         );
-        border-bottom: 1px solid var(--border);
+        z-index: 1;
+      }
+      .hero > * {
+        position: relative;
+        z-index: 2;
+      }
+      .hero__title {
+        position: absolute;
+        left: 16px;
+        bottom: 14px;
+        z-index: 2;
+      }
+      .hero__title .brand__name {
+        font-size: 22px;
       }
       .body {
-        padding: 14px 16px 16px;
+        padding: 16px;
         display: flex;
         flex-direction: column;
         gap: 12px;
-      }
-      .status-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .status-row .label {
-        font-size: 13px;
-        font-weight: 600;
+        animation: floatIn 0.4s ease both;
       }
       .hint {
-        font-size: 12px;
+        font-size: 12.5px;
         color: var(--muted);
+        padding: 14px;
+      }
+      .hint b {
+        color: var(--ink);
+        font-weight: 600;
       }
       .stats {
         display: grid;
@@ -47,20 +79,22 @@
       }
       .stat {
         text-align: center;
-        padding: 12px 8px;
+        padding: 14px 8px;
       }
       .stat .num {
-        font-size: 20px;
+        font-size: 22px;
         font-weight: 800;
-        background: var(--grad);
+        background: var(--grad-bright);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
       }
       .stat .lbl {
-        font-size: 11px;
+        font-size: 10.5px;
         color: var(--muted);
-        margin-top: 2px;
+        margin-top: 3px;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
       }
       .actions {
         display: flex;
@@ -70,37 +104,35 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding-top: 4px;
-        font-size: 11px;
+        font-size: 10.5px;
+        padding-top: 2px;
       }
       .footer a {
         color: var(--muted);
       }
     </style>
   </head>
-  <body>
-    <div class="top">
-      <div class="brand">
-        <img class="brand__logo" src="../../assets/logo.svg" alt="Stashly" />
-        <div>
-          <div class="brand__name">Stashly</div>
-          <div class="brand__tag" id="version">v1.0.0</div>
-        </div>
-      </div>
+  <body class="grain">
+    <div class="hero">
+      <div class="hero__img" id="hero-img"></div>
+      <div class="hero__scrim"></div>
+      <img class="brand__logo" src="../../assets/logo.svg" alt="Stashly" />
       <span class="pill pill--warn" id="status">
         <span class="dot"></span><span id="status-text">Checking…</span>
       </span>
+      <div class="hero__title">
+        <div class="brand__name">Stashly</div>
+        <div class="brand__tag" id="version">v1.1.0</div>
+      </div>
     </div>
 
     <div class="body">
-      <div class="card" id="hint-card">
-        <p class="hint" id="hint">
-          Open a Facebook album, profile photos, or group photos page — the
-          Stashly download button appears automatically.
-        </p>
+      <div class="glass hint" id="hint">
+        Open a Facebook <b>album</b>, <b>profile</b>, or <b>group</b> photos page
+        — the Stashly button appears automatically.
       </div>
 
-      <div class="card stats">
+      <div class="glass stats">
         <div class="stat">
           <div class="num" id="downloaded-count">—</div>
           <div class="lbl">Files tracked</div>
@@ -119,8 +151,8 @@
       </div>
 
       <div class="footer">
-        <a id="github" href="#" target="_blank" rel="noopener">GitHub</a>
-        <span class="faint">Personal use • respect copyright</span>
+        <a id="github" href="#" target="_blank" rel="noopener">GitHub ↗</a>
+        <span class="faint">Personal use · respect copyright</span>
       </div>
     </div>
 

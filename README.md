@@ -66,6 +66,15 @@ npm test       # run the unit + integrity test suite (Node's built-in runner)
 npm run build  # package extension/ into dist/stashly-v<version>.zip
 ```
 
+The cinematic UI imagery is **bundled** in `extension/assets/img/` (no runtime
+network calls). To refresh it, set an Unsplash Access Key and run the build-time
+fetcher — the key is read from the environment and never committed:
+
+```bash
+# PowerShell
+$env:UNSPLASH_ACCESS_KEY="your-access-key"; node scripts/fetch-assets.mjs
+```
+
 The non-trivial background logic lives in pure, `chrome`-free modules
 (`background/match-pattern.js`, `background/storage-actions.js`) so it can be
 unit-tested in plain Node. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
@@ -109,6 +118,11 @@ you own or have permission to download, for personal archival purposes. It is no
 affiliated with, endorsed by, or sponsored by Meta or Facebook. "Facebook" is a
 trademark of Meta Platforms, Inc. Use of this software may be subject to
 Facebook's Terms of Service; you are solely responsible for how you use it.
+
+## Credits
+
+UI photography from [Unsplash](https://unsplash.com/?utm_source=Stashly&utm_medium=referral)
+by Andy Sanchez, Universtock, and Tomás Mendes.
 
 ## License
 

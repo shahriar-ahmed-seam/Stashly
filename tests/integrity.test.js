@@ -82,6 +82,9 @@ test("required extension files are present", () => {
     "pages/options/options.js",
     "pages/styles.css",
     "assets/logo.svg",
+    "assets/img/hero.jpg",
+    "assets/img/popup.jpg",
+    "assets/img/credits.json",
   ];
   for (const rel of required) {
     assert.ok(fs.existsSync(path.join(EXT, rel)), `missing: ${rel}`);
